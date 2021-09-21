@@ -1,0 +1,30 @@
+{
+    "name": "@lomray/prettier-config",
+    "version": "1.0.0",
+    "description": "This package provides Lomray .prettier as an extensible shared config.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Lomray-Software/prettier-config"
+    },
+    "keywords": [
+        "prettier",
+        "prettierconfig",
+        "config",
+        "lomray",
+        "javascript",
+        "styleguide",
+        "es2015",
+        "es2016",
+        "es2017",
+        "es2018"
+    ],
+    "author": "Mikhail Yarmaliuk",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Lomray-Software/prettier-config/issues"
+    },
+    "homepage": "https://github.com/Lomray-Software/prettier-config",
+    "dependencies": {},
+    "peerDependencies": {}
+}
