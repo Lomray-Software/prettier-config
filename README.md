@@ -6,9 +6,9 @@ This package provides Lomray base JS (Typescript) .prettierrc.js as an extensibl
 
 1. Install package:
 
-  ```sh
-  npm i --save-dev @lomray/prettier-config
-  ```
+```sh
+npm i --save-dev @lomray/prettier-config
+```
 
 2. Example you .prettierrc.js.
 ```js
