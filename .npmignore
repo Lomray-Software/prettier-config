@@ -1,2 +1,5 @@
-workflows
 .gitignore
+release.config.js
+commitlint.config.js
+.husky
+.github
