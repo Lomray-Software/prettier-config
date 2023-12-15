@@ -12,7 +12,9 @@ This package provides Lomray base JS (Typescript) .prettierrc.js as an extensibl
 
 2. Example you .prettierrc.js.
 ```js
+import config from '@lomray/prettier-config';
+
 export default {
-	...require('@lomray/prettier-config'),
+	...config,
 };
 ```
