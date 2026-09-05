@@ -1,33 +1,40 @@
-name: Build & Publish
+name: Publish
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
+  workflow_dispatch:
 
-env:
-  NODE_VERSION: 22.21.0
-  ENABLE_CACHE: yes
-  NPM_VERSION: 11.5.2
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
 
 jobs:
-  build:
+  check:
+    uses: ./.github/workflows/check.yml
+  publish:
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    needs: check
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: ${{ env.ENABLE_CACHE == 'yes' && 'npm' || '' }}
-
-      - run: npm i -g npm@${{ env.NPM_VERSION }}
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Publish npm packages / create github release
-        run: npx semantic-release
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.23.2
+          cache: npm
+      - run: npm install --global npm@12.0.2
+      - run: npm ci --ignore-scripts
+      - name: Publish package and release notes
+        run: npx --no-install semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
